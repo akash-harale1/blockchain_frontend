@@ -1,0 +1,25 @@
+.ver_nav {
+  position: absolute;
+  background-color: #2d53da;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  left: 0;
+  width: 150px;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 10px;
+  height: 90vh;
+  text-align: center;
+  color: white;
+}
+
+.ver_nav div:hover {
+  cursor: pointer;
+}
+
+.dash_body {
+  width: 80%;
+  /* background-color: yellow; */
+  margin: 1rem auto 0 12rem;
+}

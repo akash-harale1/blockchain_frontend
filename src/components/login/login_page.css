@@ -1,0 +1,16 @@
+.login_body {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: 10rem auto 0 auto;
+}
+.input_fields {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.log_btn{
+
+    
+    
+}

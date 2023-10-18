@@ -1,0 +1,23 @@
+.card_body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background-color: #5c636a;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.pop_btn {
+  margin: 0.3rem;
+}
+
+.card_close {
+  text-align: end;
+  margin-bottom: 0.2rem;
+}
+
+.card_close :hover {
+  cursor: pointer;
+}
