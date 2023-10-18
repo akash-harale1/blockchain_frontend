@@ -10,6 +10,8 @@ import SignUp from "./components/sign_up/sign_up";
 import PopUp from "./components/Navbar/popup";
 import { PopContext } from "./components/context/popupcontext";
 import Dash from "./components/DashBoard/Dash";
+import Event from "./components/DashBoard/Event";
+import Profile from "./components/DashBoard/Profile";
 
 function App() {
   const [pop, setPop] = useState(false);
@@ -33,7 +35,10 @@ function App() {
           <PopUp></PopUp>
           <Routes>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/dash" element={<Dash />}></Route>
+            <Route path="/dash" element={<Dash />}>
+              <Route path="profile" element={<Profile />}></Route>
+              <Route path="event" element={<Event />}></Route>
+            </Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
           </Routes>

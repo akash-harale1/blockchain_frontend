@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import "./Dash.css";
 import { PopContext } from "../context/popupcontext";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Login from "../login/login_page";
+import { Link } from "react-router-dom";
 import Card from "../card/card";
 
 export default function Dash() {
@@ -22,13 +23,16 @@ export default function Dash() {
     return (
       <>
         <nav className="ver_nav">
-          <div>One</div>
-          <div>Two</div>
+          <div>
+            <Link to="/dash/profile">Profile</Link>
+          </div>
+          <div>
+            <Link to="/dash/event">Create Event</Link>
+          </div>
           <div onClick={logOut}>Logout</div>
         </nav>
         <div className="dash_body">
-          <h3>Welcome Back</h3>
-          <Card></Card>
+          <Outlet />
         </div>
 
         {/* <button onClick={logOut}>LogOut</button> */}

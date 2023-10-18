@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "./login_page.css";
+
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Dash from "../DashBoard/Dash";
@@ -8,6 +9,8 @@ import { PopContext } from "../context/popupcontext";
 // import jwt from "jsonwebtoken";
 
 export default function Login() {
+  const link = process.env.serv;
+
   const emailRef = useRef(null);
   const passRef = useRef(null);
 
