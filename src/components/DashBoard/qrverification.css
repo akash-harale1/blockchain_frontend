@@ -1,0 +1,22 @@
+.verification_page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#reader {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  border-radius: 5px;
+  margin: 20px auto 0 auto;
+}
+#reader button {
+  background-color: #2a265f;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+}

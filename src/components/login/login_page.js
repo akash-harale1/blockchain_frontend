@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "./login_page.css";
+import login from "../images/vecteezy_cloud-computing-modern-flat-concept-for-web-banner-design_5879539.jpg";
 
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Dash from "../DashBoard/Dash";
 import { PopContext } from "../context/popupcontext";
+import { ThreeDots } from "react-loader-spinner";
 // import "jsonwebtoken"
 // import jwt from "jsonwebtoken";
 
@@ -15,6 +17,8 @@ export default function Login() {
   const passRef = useRef(null);
 
   const { isLogged, setIsLogged } = useContext(PopContext);
+
+  const [loginbtn, showLoginbtn] = useState(true);
 
   const navigate = useNavigate();
 
@@ -31,7 +35,7 @@ export default function Login() {
 
   function getUser(e) {
     e.preventDefault();
-
+    showLoginbtn(false);
     const obj = {};
     obj.Email = emailRef.current.value.trim();
     obj.Password = passRef.current.value.trim();
@@ -46,14 +50,22 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res.data.Token);
+        showLoginbtn(true);
         setIsLogged(true);
         navigate("/dash");
         sessionStorage.setItem("Token", res.data.Token);
+        sessionStorage.setItem("Email", obj.Email);
       })
       .catch((err) => {
         setErr(true);
-        console.log(err);
-        setErrmsg(err.response.data.Error);
+        if (typeof err.response.data === "object") {
+          console.log(err.response.data.Error);
+          setErrmsg(err.response.data.Error);
+        } else {
+          console.log(err.response.data);
+          showLoginbtn(true);
+          setErrmsg(err.response.data);
+        }
       });
   }
 
@@ -63,6 +75,22 @@ export default function Login() {
     return (
       <>
         <div className="login_body">
+          {err ? (
+            <div
+              id="login_error"
+              className="alert alert-danger login_error"
+              role="alert"
+            >
+              {errmsg}
+            </div>
+          ) : (
+            <span></span>
+          )}
+
+          <div className="login_img">
+            <img src={login} />
+          </div>
+
           <form onSubmit={getUser}>
             <input
               type="email"
@@ -74,7 +102,7 @@ export default function Login() {
               required
             />
             <input
-              type="text"
+              type="password"
               ref={passRef}
               className="form-control input_fields"
               placeholder="Password"
@@ -83,16 +111,25 @@ export default function Login() {
               required
             />
 
-            <input
-              type="submit"
-              className="btn btn-secondary input_fields log_btn"
-              value="Log In"
-            />
-
-            {err ? (
-              <span style={{ color: "red" }}>*{errmsg}😔</span>
+            {loginbtn ? (
+              <input
+                type="submit"
+                className="btn btn-secondary input_fields log_btn"
+                value="Log In"
+              />
             ) : (
-              <span></span>
+              <div className="login_loader">
+                <ThreeDots
+                  height="50"
+                  width="50"
+                  radius="9"
+                  color="#2a265f"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              </div>
             )}
 
             <div>

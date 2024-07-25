@@ -3,14 +3,67 @@
   display: flex;
   flex-direction: column;
   margin: 10rem auto 0 auto;
+  /* justify-content: center; */
 }
 .input_fields {
   padding: 0.5rem;
   margin-top: 0.5rem;
 }
 
-.log_btn{
+.login_loader{
+  display: flex;
+  justify-content: center;
+}
 
-    
-    
+.log_btn {
+  background-color: #2a265f !important;
+  border-radius: 20px;
+}
+
+.login_img {
+  width: 100%;
+  height: 300px;
+}
+
+.login_img img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .login_body {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+  /* Your styles here */
+  .login_body {
+    width: 60%;
+  }
+}
+
+.login_error {
+  padding: 0.5rem;
+  margin: 0;
+  height: 40px;
+}
+
+.pass_body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.pass_visibility_icon {
+  /* position: absolute; */
+  height: 100%;
+}
+.pass_field:focus {
+  outline: none !important;
+}
+
+input:focus{
+  outline: none !important;
 }

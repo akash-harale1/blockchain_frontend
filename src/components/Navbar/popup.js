@@ -1,17 +1,28 @@
 import { useContext, useState } from "react";
 import "./popup.css";
-import { X } from "phosphor-react";
+import { Files, X } from "phosphor-react";
 import { ethers } from "ethers";
 import { PopContext } from "../context/popupcontext";
 import OpenApp from "react-open-app";
-import { MetaMaskProvider, useSDK } from "@metamask/sdk-react";
+// import { Web3Provider } from ethers;
 
 export default function PopUp() {
-  const { pop, setPop, metaConnect, setMetaConnect } = useContext(PopContext);
-  const { sdk } = useSDK();
+  const {
+    pop,
+    setPop,
+    metaConnect,
+    setMetaConnect,
+    wallet,
+    setWallet,
+    setProvider,
+    provider,
+  } = useContext(PopContext);
+  // const { sdk } = useSDK();
 
   async function connect() {
     if (window.ethereum) {
+      const curr_provider = new ethers.BrowserProvider(window.ethereum);
+      setProvider(curr_provider);
       const temp = document.getElementById("main_body");
       temp.classList.remove("hide_body");
       console.log(temp);
@@ -20,7 +31,11 @@ export default function PopUp() {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        console.log(accounts)
+        console.log(accounts);
+
+        // console.log(signer);
+        console.log(accounts[0]);
+        setWallet(accounts[0]);
         setMetaConnect(true);
       } catch (error) {
         console.log(error);
@@ -41,40 +56,28 @@ export default function PopUp() {
     <>
       {pop && (
         <div className="card_body">
-          <div className="card_close">
-            <X onClick={shut} size={28} />
+          <div className="pop_card_header">
+            <div>
+              <Files size={24} />
+              <span>Terms and Services</span>
+            </div>
+            <X className="shut_btn" onClick={shut} size={18} />
           </div>
 
+
+
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content. Sunt labore reprehenderit ut dolor quis
-            ea in excepteur id enim ullamco. Quis excepteur incididunt irure
-            cupidatat commodo excepteur minim anim. Sint sit magna ut amet non
-            deserunt cillum aliqua anim. Non esse ea exercitation magna labore
-            excepteur anim nulla. Reprehenderit commodo in laborum consectetur
-            amet velit exercitation ex pariatur. Do minim ex sint ipsum labore
-            commodo aute sint enim reprehenderit aliqua excepteur cupidatat
-            pariatur. Exercitation sint aliqua commodo et dolor irure in eiusmod
-            consequat ut elit. Deserunt excepteur aliquip voluptate irure culpa
-            veniam exercitation cillum eiusmod.Cupidatat irure ex qui
-            adipisicing ullamco velit anim ipsum ullamco nisi sint. Voluptate
-            duis eiusmod esse fugiat non nisi nostrud ipsum nulla Lorem occaecat
-            dolor sit. Ullamco anim elit anim amet laborum aliqua sint
-            incididunt adipisicing. Non minim velit in cupidatat. Mollit mollit
-            tempor voluptate consequat voluptate veniam consectetur eiusmod
-            laborum duis anim.
+            Before you proceed with creating events on our platform, we want to
+            inform you about an important aspect of our service. Please be aware
+            that there are platform fees associated with event creation
           </p>
 
           <div className="card_btns">
-    
+            <button onClick={connect} className="btn btn-primary pop_btn">
+              Connect Wallet
+            </button>
 
-            <div>
-              <button onClick={connect} className="btn btn-primary pop_btn">
-                Connect
-              </button>
-            </div>
-
-            <button className="btn btn-danger pop_btn" onClick={shut}>
+            <button className="btn btn-danger pop_btn warn_btn" onClick={shut}>
               Decline
             </button>
           </div>

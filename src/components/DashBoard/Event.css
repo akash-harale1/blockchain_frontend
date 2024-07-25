@@ -1,0 +1,42 @@
+.event_form_body {
+  width: 70%;
+  display: flex;
+  margin: 0 auto 0 auto;
+}
+.event_form_body form {
+  width: 100%;
+}
+.submit_btn {
+  background-color: #2a265f !important;
+}
+
+@media screen and (max-width: 768px) {
+  .event_form_body {
+    width: 100%;
+  }
+  .event_form_body form {
+    width: 90%;
+  }
+}
+
+.create_event_loader {
+  display: flex;
+  justify-content: center;
+}
+
+.event_alert {
+  position: fixed;
+  /* background: linear-gradient(to bottom, #fff177, #ffd633); */
+  z-index: 100;
+  width: 60%;
+  display: none;
+  margin: 0 auto 0 auto;
+}
+.show_event_alert {
+  display: block;
+}
+
+.form_labels {
+  /* margin-top: 2px; */
+  /* background-color: yellow; */
+}

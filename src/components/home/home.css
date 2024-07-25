@@ -1,1 +1,19 @@
+.home_body {
+  width: 90%;
+  margin: 5rem auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.wallet_alert {
+  position: fixed;
+  /* background: linear-gradient(to bottom, #fff177, #ffd633); */
+  z-index: 100;
+  width: 95%;
+  display: none;
+  margin: 0 auto 0 auto;
+}
+
+.show_alert {
+  display: block;
+}

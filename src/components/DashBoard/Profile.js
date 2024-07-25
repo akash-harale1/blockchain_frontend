@@ -1,9 +1,12 @@
 import Card from "../card/card";
+import "./profile.css";
 
 export default function Profile() {
   return (
     <>
-      <Card></Card>
+      <div className="profile_body">
+        <Card></Card>
+      </div>
     </>
   );
 }
