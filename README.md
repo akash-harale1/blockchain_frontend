@@ -3,6 +3,7 @@
 This project is a blockchain-based ticketing system that allows users to create and purchase event tickets securely and transparently. The system ensures that ticket transactions are recorded on the blockchain, preventing fraud and ensuring the integrity of the tickets.
 
 #Features:
+
 1)User Authentication: Users can sign up and log in to the platform.
 
 2)Event Creation: Event organizers can create events. Upon event creation, a gas fee is deducted.
